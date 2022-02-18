@@ -35,7 +35,7 @@ if ($stmt->rowCount() > 0) {
             <div class="alert alert-danger alert-dismissable">
                 <button class="close" type="button" data-dismiss="alert" aria-hidden="true">X</button>
                 <h5><i class="icon fas fa-times"></i>Gagal</h5>
-                Username sudah terdaftar
+                Password tidak sama
             </div>
 <?php
         } else {
