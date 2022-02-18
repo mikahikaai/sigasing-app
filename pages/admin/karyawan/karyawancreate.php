@@ -136,11 +136,16 @@ if ($stmt->rowCount() > 0) {
                     <label for="peran">Peran</label>
                     <select name="peran" class="form-control">
                         <option value="">--Pilih Peran--</option>
-                        <option value="ADMIN">ADMIN</option>
-                        <option value="USER">USER</option>
+                        <?php
+                        $options = array('ADMIN', 'USER');
+                        foreach ($options as $option){
+                            $selected = $_POST['peran'] == $option ? 'selected' : '';
+                            echo "<option value=\"" . $option . "\"" . $selected . ">" . $option . "</option>";
+                        }
+                        ?>
                     </select>
                 </div>
-                <a href="?page=bagianread" class="btn btn-danger btn-sm float-right">
+                <a href="?page=karyawanread" class="btn btn-danger btn-sm float-right">
                     <i class="fa fa-times"></i> Batal
                 </a>
                 <button type="submit" name="button_create" class="btn btn-success btn-sm float-right mr-1">
