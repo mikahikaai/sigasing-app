@@ -8,19 +8,19 @@ $stmt->bindParam(1, $_POST['nama_lokasi']);
 $stmt->execute();
 
 if ($stmt->rowCount() > 0) {
-    ?>
-        <div class="alert alert-danger alert-dismissable">
-            <button class="close" type="button" data-dismiss="alert" aria-hidden="true">X</button>
-            <h5><i class="icon fas fa-times"></i>Gagal</h5>
-            Data sudah ada di database
-        </div>
-    <?php
+?>
+    <div class="alert alert-danger alert-dismissable">
+        <button class="close" type="button" data-dismiss="alert" aria-hidden="true">X</button>
+        <h5><i class="icon fas fa-times"></i>Gagal</h5>
+        Data sudah ada di database
+    </div>
+<?php
 } else {
 
     if (isset($_POST['button_create'])) {
         $insertsql = "insert into lokasi (nama_lokasi) values ('" . $_POST['nama_lokasi'] . "')";
         $stmt = $db->prepare($insertsql);
-        if ($stmt->execute()){
+        if ($stmt->execute()) {
             $_SESSION['hasil'] = true;
             $_SESSION['pesan'] = "Berhasil Menambah Data";
         } else {
@@ -63,7 +63,7 @@ if ($stmt->rowCount() > 0) {
             <form action="" method="post">
                 <div class="form-group">
                     <label for="nama_lokasi">Nama Lokasi</label>
-                    <input type="text" name="nama_lokasi" class="form-control">
+                    <input type="text" name="nama_lokasi" class="form-control" value="<?= isset($_POST['button_create']) ? $_POST['nama_lokasi'] : ''?>">
                 </div>
                 <a href="?page=lokasiread" class="btn btn-danger btn-sm float-right">
                     <i class="fa fa-times"></i> Batal
