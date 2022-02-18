@@ -3,11 +3,11 @@ $database = new Database;
 $db = $database->getConnection();
     if(isset($_GET['id'])){
         $deletesql1 = "DELETE from karyawan where id=?"; 
-        $stmt1 = $db->prepare($deletesql);
+        $stmt1 = $db->prepare($deletesql1);
         $stmt1->bindParam(1, $_GET['id']);
 
         $deletesql2 = "DELETE from pengguna where id=?"; 
-        $stmt2 = $db->prepare($deletesql);
+        $stmt2 = $db->prepare($deletesql2);
         $stmt2->bindParam(1, $_GET['id']);
     }
     if ($stmt1->execute() or $stmt2->execute()){
