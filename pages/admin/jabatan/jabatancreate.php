@@ -67,19 +67,19 @@ if ($stmt->rowCount() > 0) {
             <form action="" method="post">
                 <div class="form-group">
                     <label for="nama_jabatan">Nama Jabatan</label>
-                    <input type="text" name="nama_jabatan" class="form-control">
+                    <input type="text" name="nama_jabatan" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label for="gaji_pokok">Gaji Pokok</label>
-                    <input type="number" name="gaji_pokok" class="form-control" onkeypress="return (event.charCode > 47 && event.charCode <58) || event.charCode == 46" min="0">
+                    <input type="number" name="gaji_pokok" class="form-control" onkeypress="return (event.charCode > 47 && event.charCode <58) || event.charCode == 46" min="0" required>
                 </div>
                 <div class="form-group">
                     <label for="tunjangan_jabatan">Tunjangan Jabatan</label>
-                    <input type="number" name="tunjangan_jabatan" class="form-control" onkeypress="return (event.charCode > 47 && event.charCode <58) || event.charCode == 46" min="0">
+                    <input type="number" name="tunjangan_jabatan" class="form-control" onkeypress="return (event.charCode > 47 && event.charCode <58) || event.charCode == 46" min="0" required>
                 </div>
                 <div class="form-group">
                     <label for="uang_makan">Uang Makan Perhari</label>
-                    <input type="number" name="uang_makan" class="form-control" onkeypress="return (event.charCode > 47 && event.charCode <58) || event.charCode == 46" min="0">
+                    <input type="number" name="uang_makan" class="form-control" onkeypress="return (event.charCode > 47 && event.charCode <58) || event.charCode == 46" min="0" required>
                 </div>
                 <a href="?page=jabatanread" class="btn btn-danger btn-sm float-right">
                     <i class="fa fa-times"></i> Batal

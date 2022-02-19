@@ -37,6 +37,14 @@ if ($stmt->rowCount() > 0) {
                 <h5><i class="icon fas fa-times"></i>Gagal</h5>
                 Password tidak sama
             </div>
+        <?php
+        } elseif ($_POST['peran'] == "") {
+        ?>
+            <div class="alert alert-danger alert-dismissable">
+                <button class="close" type="button" data-dismiss="alert" aria-hidden="true">X</button>
+                <h5><i class="icon fas fa-times"></i>Gagal</h5>
+                Peran belum dipilih
+            </div>
 <?php
         } else {
             $md5pass = md5($_POST['password']);
@@ -102,31 +110,31 @@ if ($stmt->rowCount() > 0) {
             <form action="" method="post">
                 <div class="form-group">
                     <label for="nik">Nomor Induk Karyawan</label>
-                    <input type="text" name="nik" class="form-control" onkeypress="return (event.charCode > 47 && event.charCode <58) || event.charCode == 46" maxlength="16" value="<?= isset($_POST['button_create']) ? $_POST['nik'] : '' ?>">
+                    <input type="text" name="nik" class="form-control" onkeypress="return (event.charCode > 47 && event.charCode <58) || event.charCode == 46" maxlength="16" value="<?= isset($_POST['button_create']) ? $_POST['nik'] : '' ?>" required>
                 </div>
                 <div class="form-group">
                     <label for="nama">Nama Lengkap</label>
-                    <input type="text" name="nama" class="form-control" value="<?= isset($_POST['button_create']) ? $_POST['nama'] : '' ?>">
+                    <input type="text" name="nama" class="form-control" value="<?= isset($_POST['button_create']) ? $_POST['nama'] : '' ?>" required>
                 </div>
                 <div class="form-group">
                     <label for="nohp">Handphone</label>
-                    <input type="text" name="nohp" class="form-control" onkeypress="return (event.charCode > 47 && event.charCode <58) || event.charCode == 46" maxlength="14" value="<?= isset($_POST['button_create']) ? $_POST['nohp'] : '' ?>">
+                    <input type="text" name="nohp" class="form-control" onkeypress="return (event.charCode > 47 && event.charCode <58) || event.charCode == 46" maxlength="14" value="<?= isset($_POST['button_create']) ? $_POST['nohp'] : '' ?>" required>
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" name="email" class="form-control" value="<?= isset($_POST['button_create']) ? $_POST['email'] : '' ?>">
+                    <input type="email" name="email" class="form-control" value="<?= isset($_POST['button_create']) ? $_POST['email'] : '' ?>" required>
                 </div>
                 <div class="form-group">
                     <label for="tglmasuk">Tanggal Masuk</label>
-                    <input type="date" name="tglmasuk" class="form-control" value="<?= isset($_POST['button_create']) ? $_POST['tglmasuk'] : '' ?>">
+                    <input type="date" name="tglmasuk" class="form-control" value="<?= isset($_POST['button_create']) ? $_POST['tglmasuk'] : '' ?>" required>
                 </div>
                 <div class="form-group">
                     <label for="username">Username</label>
-                    <input type="text" name="username" class="form-control" value="<?= isset($_POST['button_create']) ? $_POST['username'] : '' ?>">
+                    <input type="text" name="username" class="form-control" value="<?= isset($_POST['button_create']) ? $_POST['username'] : '' ?>" required>
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
-                    <input type="password" name="password" class="form-control" value="<?= isset($_POST['button_create']) ? $_POST['password'] : '' ?>">
+                    <input type="password" name="password" class="form-control" value="<?= isset($_POST['button_create']) ? $_POST['password'] : '' ?>" required>
                 </div>
                 <div class="form-group">
                     <label for="password2">Password (Ulangi)</label>
@@ -134,11 +142,11 @@ if ($stmt->rowCount() > 0) {
                 </div>
                 <div class="form-group">
                     <label for="peran">Peran</label>
-                    <select name="peran" class="form-control">
+                    <select name="peran" class="form-control" required>
                         <option value="">--Pilih Peran--</option>
                         <?php
                         $options = array('ADMIN', 'USER');
-                        foreach ($options as $option){
+                        foreach ($options as $option) {
                             $selected = $_POST['peran'] == $option ? 'selected' : '';
                             echo "<option value=\"" . $option . "\"" . $selected . ">" . $option . "</option>";
                         }

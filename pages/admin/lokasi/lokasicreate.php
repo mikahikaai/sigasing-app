@@ -63,7 +63,7 @@ if ($stmt->rowCount() > 0) {
             <form action="" method="post">
                 <div class="form-group">
                     <label for="nama_lokasi">Nama Lokasi</label>
-                    <input type="text" name="nama_lokasi" class="form-control" value="<?= isset($_POST['button_create']) ? $_POST['nama_lokasi'] : ''?>">
+                    <input type="text" name="nama_lokasi" class="form-control" value="<?= isset($_POST['button_create']) ? $_POST['nama_lokasi'] : ''?>" required>
                 </div>
                 <a href="?page=lokasiread" class="btn btn-danger btn-sm float-right">
                     <i class="fa fa-times"></i> Batal

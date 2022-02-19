@@ -67,11 +67,11 @@ if ($stmt->rowCount() > 0) {
             <form action="" method="post">
                 <div class="form-group">
                     <label for="nama">Nama Bagian</label>
-                    <input type="text" name="nama" class="form-control">
+                    <input type="text" name="nama" class="form-control" required>
                 </div>
                 <div class="form-group">
                     <label for="karyawan">Nama Kepala Bagian</label>
-                    <select name="karyawan" class="form-control">
+                    <select name="karyawan" class="form-control" required>
                         <option value="">--Pilih Kepala Bagian--</option>
                         <?php
                         $selectksql = "SELECT * FROM karyawan";
@@ -85,7 +85,7 @@ if ($stmt->rowCount() > 0) {
                         ?>
                     </select>
                     <label for="lokasi">Lokasi Kantor</label>
-                    <select name="lokasi" class="form-control">
+                    <select name="lokasi" class="form-control" required>
                         <option value="">--Pilih Lokasi Kantor--</option>
                         <?php
                         $selectlsql = "SELECT * FROM lokasi";
