@@ -85,8 +85,20 @@ if (isset($_SESSION['hasil'])) {
                             <td><?= $no++ ?></td>
                             <td><?= $row['nik'] ?></td>
                             <td><?= $row['nama_lengkap'] ?></td>
-                            <td><?= $row['bagian_terkini'] ?></td>
-                            <td><?= $row['jabatan_terkini'] ?></td>
+                            <td>
+                                <?php
+                                    $bagianterkini = $row['bagian_terkini'] ?? 'Belum Memiliki Bagian';
+                                ?>
+                                <a href="?page=karyawanbagian&id=<?= $row['id'] ?>" class="btn bg-fuchsia btn-sm mr-1 btn-block text-left">
+                                <i class="fa fa-building mr-1"></i><?= $bagianterkini; ?></a>
+                            </td>
+                            <td>
+                                <?php
+                                    $jabatanterkini = $row['jabatan_terkini'] ?? 'Belum Memiliki Jabatan';
+                                ?>
+                                 <a href="?page=karyawanbagian&id=<?= $row['id'] ?>" class="btn bg-fuchsia btn-sm mr-1 btn-block text-left">
+                                <i class="fa fa-building mr-1"></i><?= $jabatanterkini; ?></a>
+                            </td>
                             <td>
                                 <a href="?page=karyawanupdate&id=<?= $row['id']; ?>" class="btn btn-primary btn-sm mr-1">
                                     <i class="fa fa-edit"></i> Ubah
