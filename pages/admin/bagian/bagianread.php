@@ -2,9 +2,8 @@
 
 <?php
 if (isset($_SESSION['hasil'])) {
+    if ($_SESSION['hasil']) {
 ?>
-    <?php if ($_SESSION['hasil']) {
-    ?>
         <div class="alert alert-success alert-dismissable">
             <button class="close" type="button" data-dismiss="alert" aria-hidden="true">X</button>
             <h5><i class="icon fas fa-check"></i>Sukses</h5>

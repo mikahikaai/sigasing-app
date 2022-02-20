@@ -96,7 +96,7 @@ if (isset($_SESSION['hasil'])) {
                                 <?php
                                     $jabatanterkini = $row['jabatan_terkini'] ?? 'Belum Memiliki Jabatan';
                                 ?>
-                                 <a href="?page=karyawanbagian&id=<?= $row['id'] ?>" class="btn bg-fuchsia btn-sm mr-1 btn-block text-left">
+                                 <a href="?page=karyawanjabatan&id=<?= $row['id'] ?>" class="btn bg-lime btn-sm mr-1 btn-block text-left">
                                 <i class="fa fa-building mr-1"></i><?= $jabatanterkini; ?></a>
                             </td>
                             <td>

@@ -10,9 +10,9 @@ if (isset($_GET['id'])) {
     $row = $stmt->fetch();
     if (isset($row['id'])) {
         if (isset($_POST['button_create'])) {
-            $insertsql = "INSERT INTO bagian_karyawan VALUES (null,?,?,?)";
+            $insertsql = "INSERT INTO jabatan_karyawan VALUES (null,?,?,?)";
             $stmt = $db->prepare($insertsql);
-            $stmt->bindParam(1, $_POST['bagian_id']);
+            $stmt->bindParam(1, $_POST['jabatan_id']);
             $stmt->bindParam(2, $_POST['karyawan_id']);
             $stmt->bindParam(3, $_POST['tanggal_mulai']);
             if ($stmt->execute()) {
@@ -22,10 +22,10 @@ if (isset($_GET['id'])) {
                 $_SESSION['hasil'] = false;
                 $_SESSION['pesan'] = 'Data Gagal Disimpan';
             }
-            echo '<meta http-equiv="refresh" content="0;url=?page=karyawanbagian&id=' . $_POST['karyawan_id'] . '">';
+            echo '<meta http-equiv="refresh" content="0;url=?page=karyawanjabatan&id=' . $_POST['karyawan_id'] . '">';
         }
         if (isset($_POST['button_delete'])) {
-            $deletesql = "DELETE FROM bagian_karyawan WHERE id=?";
+            $deletesql = "DELETE FROM jabatan_karyawan WHERE id=?";
             $stmt = $db->prepare($deletesql);
             $stmt->bindParam(1, $_POST['bk_id']);
             if ($stmt->execute()) {
@@ -35,7 +35,7 @@ if (isset($_GET['id'])) {
                 $_SESSION['hasil'] = false;
                 $_SESSION['pesan'] = 'Data Gagal Disimpan';
             }
-            echo '<meta http-equiv="refresh" content="0;url=?page=karyawanbagian&id=' . $_POST['karyawan_id'] . '">';
+            echo '<meta http-equiv="refresh" content="0;url=?page=karyawanjabatan&id=' . $_POST['karyawan_id'] . '">';
         }
     } else {
         echo '<meta http-equiv="refresh" content="0;url=?page=karyawanread">';
@@ -79,7 +79,7 @@ if (isset($_GET['id'])) {
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="?page=home">Home</a></li>
                     <li class="breadcrumb-item">Karyawan</li>
-                    <li class="breadcrumb-item">Riwayat Bagian</li>
+                    <li class="breadcrumb-item">Riwayat Jabatan</li>
                 </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -91,7 +91,7 @@ if (isset($_GET['id'])) {
 <section class="content">
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Riwayat Bagian</h3>
+            <h3 class="card-title">Riwayat Jabatan</h3>
         </div>
         <div class="card-body">
             <div class="row">
@@ -117,16 +117,16 @@ if (isset($_GET['id'])) {
                 <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
-                            <label for="bagian_id">Bagian</label>
-                            <select name="bagian_id" class="form-control">
-                                <option value="">--Pilih Bagian--</option>
+                            <label for="jabatan_id">Jabatan</label>
+                            <select name="jabatan_id" class="form-control">
+                                <option value="">--Pilih Jabatan--</option>
                                 <?php
 
-                                $selectsql = 'SELECT * FROM bagian';
+                                $selectsql = 'SELECT * FROM jabatan';
                                 $stmtb = $db->prepare($selectsql);
                                 $stmtb->execute();
                                 while ($rowb = $stmtb->fetch(PDO::FETCH_ASSOC)) {
-                                    echo "<option value=\"" . $rowb['id'] . "\">" . $rowb['nama_bagian'] . "</option>";
+                                    echo "<option value=\"" . $rowb['id'] . "\">" . $rowb['nama_jabatan'] . "</option>";
                                 }
                                 ?>
                             </select>
@@ -148,15 +148,15 @@ if (isset($_GET['id'])) {
                     <thead>
                         <tr>
                             <th>No.</th>
-                            <th>Nama Bagian</th>
+                            <th>Nama Jabatan</th>
                             <th>Tanggal Mulai</th>
                             <th>Opsi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
-                        $selectsql = "SELECT BK.*, B.nama_bagian FROM bagian_karyawan BK
-                            LEFT JOIN bagian B ON BK.bagian_id = B.id WHERE BK.karyawan_id = ?
+                        $selectsql = "SELECT BK.*, B.nama_jabatan FROM jabatan_karyawan BK
+                            LEFT JOIN jabatan B ON BK.jabatan_id = B.id WHERE BK.karyawan_id = ?
                             ORDER BY BK.tanggal_mulai DESC";
                         $stmt = $db->prepare($selectsql);
                         $stmt->bindParam(1, $_GET['id']);
@@ -167,7 +167,7 @@ if (isset($_GET['id'])) {
                         ?>
                             <tr>
                                 <td><?= $no++ ?></td>
-                                <td><?= $rowb['nama_bagian'] ?></td>
+                                <td><?= $rowb['nama_jabatan'] ?></td>
                                 <td><?= $rowb['tanggal_mulai'] ?></td>
                                 <td>
                                     <form action="" method="post">
