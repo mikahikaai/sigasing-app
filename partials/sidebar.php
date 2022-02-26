@@ -36,13 +36,36 @@
         <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
         <li class="nav-item">
-          <a href="?page=home" class="nav-link active">
+          <a href="?page=home" class="nav-link">
             <i class="nav-icon fas fa-home"></i>
             <p>
               Home
               <i class="right fas fa-angle-left"></i>
             </p>
           </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-money-bill"></i>
+            <p>
+              Penggajian
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="?page=penggajianrekap" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Rekap Gaji</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Riwayat Gaji</p>
+              </a>
+            </li>
+          </ul>
         </li>
         <li class="nav-item">
           <a href="#" class="nav-link">
